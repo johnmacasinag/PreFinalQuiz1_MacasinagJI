@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PreFinalQuiz1_MacasinagJI.Models.TitlesModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Of Book Titles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table id="tblTitles" class="table">
+    <thead>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+
+
+        <th>
+            Author
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Author) @Html.DisplayFor(modelItem => item.AuthorFN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(document).ready(function () {
+        $('#tblTitles').DataTable();
+    });
+</script>
